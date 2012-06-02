@@ -1,0 +1,18 @@
+<h2>Admin Login</h2>
+
+<%= form_tag session_path do |f| %>
+  <p id="error"><%= flash[:error] %></p>
+
+  <div class="field">
+    <%= label_tag :username %><br />
+    <%= text_field_tag :username %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Login' %>
+  </div>
+<% end %>
+

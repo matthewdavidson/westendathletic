@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
     else
-      render action: "new"
+      render "new"
     end
   end
 
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to @user, notice: 'User was successfully updated.'
     else
-      render action: "edit"
+      render "edit"
     end
   end
 
@@ -48,6 +48,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to users_url
+    redirect_to users_path
   end
 end
