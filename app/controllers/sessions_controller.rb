@@ -1,23 +1,18 @@
-
 class SessionsController < ApplicationController
 
   # GET /session/new
   def new
-    flash[:error] = nil
+    @session = Session.new
   end
 
   # POST /session
   def create
-    user = User.authenticate(
-      params[:username], 
-      params[:password]
-    ) 
+    @session = Session.new(params[:session])
 
-    if user
-      session[:user_id] = user.id
-      redirect_to users_path
+    if @session.valid?
+      session[:user_id] = @session.user.id
+      redirect_to @session.user
     else
-      flash[:error] = 'Invalid credentials!'
       render "new"
     end
   end
