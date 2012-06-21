@@ -1,4 +1,6 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
+
+  before_filter :authorisation_required
   
   # GET /users
   def index
@@ -25,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to admin_users_path, notice: 'User was successfully created.'
     else
       render "new"
     end
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to admin_users_path, notice: 'User was successfully updated.'
     else
       render "edit"
     end
@@ -47,6 +49,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to users_path
+    redirect_to admin_users_path, notice: 'User was successfully destroyed.'
   end
 end
