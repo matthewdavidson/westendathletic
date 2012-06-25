@@ -1,31 +1,44 @@
-<%= form_for([:admin, @user]) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for([:admin, @user], :html => {:class => 'form-horizontal well'}) do |f| %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset>
+
+    <div class="control-group <%= 'error' if @user.errors[:username].any? %>">
+      <%= f.label :username, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :username %>
+        <span class="help-inline"><%= @user.errors[:username].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @user.errors[:email].any? %>">
+      <%= f.label :email, 'Email address', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :email %>
+        <span class="help-inline"><%= @user.errors[:email].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @user.errors[:password].any? %>">
+      <%= f.label :password, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password %>
+        <span class="help-inline"><%= @user.errors[:password].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @user.errors[:password_confirmation].any? %>">
+      <%= f.label :password_confirmation, 'Confirm password', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation %>
+        <span class="help-inline"><%= @user.errors[:password_confirmation].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', admin_users_path, :class => 'btn' %>
+    </div>
+
+</fieldset>
+
 <% end %>

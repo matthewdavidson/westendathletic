@@ -13,6 +13,7 @@ class Admin::SessionsController < ApplicationController
       session[:user_id] = @session.user.id
       redirect_to admin_root_path
     else
+      flash.now[:error] = 'Your login attempt was unsuccessful.'
       render "new"
     end
   end
@@ -20,6 +21,7 @@ class Admin::SessionsController < ApplicationController
   # DELETE /session
   def destroy
     session[:user_id] = nil
-    redirect_to new_admin_session_path, notice: 'Logged out successfully.'
+    flash[:success] = 'You have successfully logged out.'
+    redirect_to new_admin_session_path
   end
 end

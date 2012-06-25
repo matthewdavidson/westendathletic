@@ -1,46 +1,30 @@
 <div class="page-header">
-  <h1>Admin Login</h1>
+  <h1>Login</h1>
 </div>
 
-<% if flash[:notice] %>
-<div class="alert alert-success">
-  <button class="close" data-dismiss="alert">×</button>
-  <%= flash[:notice] %>
-</div>
-<% end %>
+<div class="row">
 
-<%= form_for @session, :url => admin_session_path, :html => { :class => "well" } do |f| %>
+  <div class="span6">
 
-  <% if @session.errors.any? %>
-  <div class="alert alert-error">
-    There was a problem logging you in!
-    <button class="close" data-dismiss="alert">×</button>
-  </div>
+  <%= form_for @session, :url => admin_session_path, :html => { :class => "well" } do |f| %>
+
+    <div class="control-group <%= 'error' if @session.errors[:username].any? || @session.errors[:base].any? %>">
+      <%= f.text_field :username, :placeholder => "Username" %>
+    </div>
+
+    <div class="control-group <%= 'error' if @session.errors[:password].any? || @session.errors[:base].any? %>">
+      <%= f.password_field :password, :placeholder => "Password" %>
+    </div>
+
+    <%= f.submit 'Login', :class => 'btn btn-primary' %>
+    <%= link_to 'Back', '#', :class => 'btn' %>
+
   <% end %>
 
-  <fieldset>
+  </div>
 
-    <div class="control-group <%= 'error' if @session.errors[:username].any? %>">
-      <%= f.label :username, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :username %>
-        <span class="help-inline"><%= @session.errors[:username].join(", ") %></span>
-      </div>
-    </div>
+  <div class="span6">
+    <!-- Extra content here... -->
+  </div>
 
-    <div class="control-group <%= 'error' if @session.errors[:password].any? %>">
-      <%= f.label :password, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.password_field :password %>
-        <span class="help-inline"><%= @session.errors[:password].join(", ") %></span>
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <%= f.submit 'Login', :class => 'btn btn-primary' %>
-      <%= link_to 'Back', '#', :class => 'btn' %>
-    </div>
-
-  </fieldset>
-
-<% end %>
+</div>

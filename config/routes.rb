@@ -1,6 +1,6 @@
 Westendathletic::Application.routes.draw do
 
-	root :to => 'admin/sessions#new' 
+	root :to => 'home#index' 
   
   namespace :admin do
 

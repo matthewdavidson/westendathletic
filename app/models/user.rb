@@ -4,14 +4,15 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
 
-  validates :username, :email,
-    :presence => true, :uniqueness =>  true
+  validates :username, :email, :password, :password_confirmation,
+    :presence => true, :length => { :maximum => 255 }
     
-  validates :password, :password_confirmation,
-    :presence => true
+  validates :username, :email,
+    :uniqueness => true
 
   validates :password,
-    :confirmation => true
+    :confirmation => true, 
+    :length => { :minimum => 6 }
 
   def self.authenticate(username, password)
     user = find_by_username(username)

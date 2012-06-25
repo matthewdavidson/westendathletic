@@ -1,34 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>West End Athletic</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-	<div class="container">
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
 
-		<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<%= link_to 'West End Athletic', root_path, :class => 'brand' %>
+			<%= link_to 'West End Athletic', root_path, :class => 'brand' %>
 
-				<ul class="nav pull-right">
-				<% if @current_user.nil? %>
-					<li><%= link_to 'Login', new_admin_session_path %></li>
-				<% else %>
-					<li><%= link_to 'Logout', admin_session_path, method: :delete %></li>
-				<% end%>
-				</ul>
-			</div>
+			<ul class="nav pull-right">
+
+			<% if @current_user.nil? %>
+
+				<li><%= link_to 'Login', new_admin_session_path %></li>
+
+			<% else %>
+
+        <li class="dropdown">
+
+          <%= link_to '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+            Admin <b class="caret"></b>
+          <% end %>
+
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Users', admin_users_path%></li>
+          </ul>
+          
+        </li>
+
+				<li><%= link_to 'Logout', admin_session_path, method: :delete %></li>
+
+			<% end%>
+
+			</ul>
+
 		</div>
 	</div>
+</div>
 
-	<%= yield %>
+<div class="container">
 
-	</div>
+  <div class="alerts span6 offset3">
+    <% flash.each do |key, message| %>
+
+    <div class="row">
+      <div class="alert fade in <%= 'alert-' + key.to_s unless key.to_s == 'notice' %>">
+        <%= message %>
+        <button class="close" data-dismiss="alert">&times;</button>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+
+  <%= yield %>
+
+</div>
+
+<div class="modal hide fade" id="deleteItem">
+
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h3>Delete <span class="item-name"></span></h3>
+  </div>
+
+  <div class="modal-body">
+    <p>Are you sure you want to delete <span class="item-name"></span>?</p>
+  </div>
+
+  <div class="modal-footer">
+    <%= link_to 'Cancel', '#', 'data-dismiss' => 'modal', :class => 'btn' %>
+    <%= link_to 'Delete', '#', method: :delete, :class => 'btn btn-danger' %>
+  </div>
+
+</div>
 
 </body>
+
 </html>

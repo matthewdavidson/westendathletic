@@ -27,8 +27,10 @@ class Admin::UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      redirect_to admin_users_path, notice: 'User was successfully created.'
+      flash[:success] = 'User was successfully created.'
+      redirect_to admin_users_path
     else
+      flash.now[:error] = 'User creation was unsuccessful.'
       render "new"
     end
   end
@@ -38,8 +40,10 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      redirect_to admin_users_path, notice: 'User was successfully updated.'
+      flash[:success] = 'User was successfully updated.'
+      redirect_to admin_users_path 
     else
+      flash.now[:error] = 'User edit was unsuccessful.'
       render "edit"
     end
   end
@@ -49,6 +53,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to admin_users_path, notice: 'User was successfully destroyed.'
+    flash[:success] = 'User was successfully destroyed.'
+    redirect_to admin_users_path
   end
 end
