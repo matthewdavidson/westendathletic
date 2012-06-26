@@ -32,6 +32,7 @@
 
           <ul class="dropdown-menu">
             <li><%= link_to 'Users', admin_users_path%></li>
+            <li><%= link_to 'Teams', admin_teams_path%></li>
           </ul>
           
         </li>
@@ -52,7 +53,7 @@
     <% flash.each do |key, message| %>
 
     <div class="row">
-      <div class="alert fade in <%= 'alert-' + key.to_s unless key.to_s == 'notice' %>">
+      <div class="alert fade in <%= 'alert-' + key.to_s %>">
         <%= message %>
         <button class="close" data-dismiss="alert">&times;</button>
       </div>

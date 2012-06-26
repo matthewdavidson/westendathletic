@@ -21,3 +21,10 @@ body {
 .alerts {
   position: absolute;
 }
+
+.bordered {
+  @extend .thumbnail;
+
+  padding: 8px;
+  margin-bottom: 15px;
+}

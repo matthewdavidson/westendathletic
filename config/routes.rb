@@ -11,6 +11,12 @@ Westendathletic::Application.routes.draw do
 
     resources :users
 
+    resources :teams do
+
+    	resources :players
+    	
+    end
+
 	end
 
 end

@@ -2,27 +2,27 @@ class Admin::UsersController < ApplicationController
 
   before_filter :authorisation_required
   
-  # GET /users
+  # GET /admin/users
   def index
     @users = User.all
   end
 
-  # GET /users/1
+  # GET /admin/users/1
   def show
     @user = User.find(params[:id])
   end
 
-  # GET /users/new
+  # GET /admin/users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
+  # GET /admin/users/1/edit
   def edit
     @user = User.find(params[:id])
   end
 
-  # POST /users
+  # POST /admin/users
   def create
     @user = User.new(params[:user])
 
@@ -31,11 +31,11 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_path
     else
       flash.now[:error] = 'User creation was unsuccessful.'
-      render "new"
+      render :new
     end
   end
 
-  # PUT /users/1
+  # PUT /admin/users/1
   def update
     @user = User.find(params[:id])
     
@@ -44,11 +44,11 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_path 
     else
       flash.now[:error] = 'User edit was unsuccessful.'
-      render "edit"
+      render :edit
     end
   end
 
-  # DELETE /users/1
+  # DELETE /admin/users/1
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -56,4 +56,5 @@ class Admin::UsersController < ApplicationController
     flash[:success] = 'User was successfully destroyed.'
     redirect_to admin_users_path
   end
+  
 end

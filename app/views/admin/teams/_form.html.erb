@@ -1,0 +1,28 @@
+<%= form_for([:admin, @team], :html => {:class => 'form-horizontal well'}) do |f| %>
+
+  <fieldset>
+
+    <div class="control-group <%= 'error' if @team.errors[:name].any? %>">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name %>
+        <span class="help-inline"><%= @team.errors[:name].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @team.errors[:info].any? %>">
+      <%= f.label :info, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :info, :rows => 5, :cols => 0 %>
+        <span class="help-inline"><%= @team.errors[:info].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', admin_teams_path, :class => 'btn' %>
+    </div>
+
+</fieldset>
+
+<% end %>

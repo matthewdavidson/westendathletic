@@ -1,0 +1,44 @@
+<%= form_for([:admin, @team, @player], :html => {:class => 'form-horizontal well'}) do |f| %>
+
+  <fieldset>
+
+    <div class="control-group <%= 'error' if @player.errors[:firstname].any? %>">
+      <%= f.label :firstname, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :firstname %>
+        <span class="help-inline"><%= @player.errors[:firstname].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @player.errors[:surname].any? %>">
+      <%= f.label :surname, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :surname %>
+        <span class="help-inline"><%= @player.errors[:surname].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @player.errors[:position].any? %>">
+      <%= f.label :position, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :position %>
+        <span class="help-inline"><%= @player.errors[:position].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @player.errors[:info].any? %>">
+      <%= f.label :info, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :info, :rows => 5, :cols => 0 %>
+        <span class="help-inline"><%= @player.errors[:info].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', admin_team_players_path, :class => 'btn' %>
+    </div>
+
+</fieldset>
+
+<% end %>
