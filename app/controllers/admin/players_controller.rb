@@ -33,7 +33,7 @@ class Admin::PlayersController < ApplicationController
 
     if @player.save
       flash[:success] = 'Player was successfully created.'
-      redirect_to admin_team_players_path
+      redirect_to admin_team_path(@team)
     else
       flash.now[:error] = 'Player creation was unsuccessful.'
       render :new
@@ -47,7 +47,7 @@ class Admin::PlayersController < ApplicationController
     
     if @player.update_attributes(params[:player])
       flash[:success] = 'Player was successfully updated.'
-      redirect_to admin_team_players_path 
+      redirect_to admin_team_path(@team)
     else
       flash.now[:error] = 'Player edit was unsuccessful.'
       render :edit
@@ -61,7 +61,7 @@ class Admin::PlayersController < ApplicationController
     @player.destroy
 
     flash[:success] = 'Player was successfully destroyed.'
-    redirect_to admin_team_players_path
+    redirect_to admin_team_path(@team)
   end
 
 end

@@ -1,0 +1,48 @@
+<%= form_for([:admin, @competition, @season], :html => {:class => 'form-horizontal well'}) do |f| %>
+
+  <fieldset>
+
+    <div class="control-group <%= 'error' if @season.errors[:name].any? %>">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name %>
+        <span class="help-inline"><%= @season.errors[:name].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @season.errors[:start_date].any? %>">
+      <%= f.label :start_date, :class => 'control-label' %>
+      <div class="controls date-resize">
+        <%= 
+          f.date_select :start_date, 
+          {
+            :order => [:day, :month, :year],
+            :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }
+          } 
+        %>
+        <span class="help-inline"><%= @season.errors[:start_date].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="control-group <%= 'error' if @season.errors[:end_date].any? %>">
+      <%= f.label :end_date, :class => 'control-label' %>
+      <div class="controls date-resize">
+       <%= 
+          f.date_select :end_date, 
+          {
+            :order => [:day, :month, :year],
+            :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }
+          } 
+        %>
+        <span class="help-inline"><%= @season.errors[:end_date].join(", ") %></span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', admin_competition_path(@competition), :class => 'btn' %>
+    </div>
+
+</fieldset>
+
+<% end %>

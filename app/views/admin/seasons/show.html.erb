@@ -1,0 +1,25 @@
+<%= render 'header' %>
+
+<div class="row">
+
+  <div class="span8">
+
+  	<div class="bordered">
+
+  		<div class="pull-right">
+        <%= link_to 'Back', admin_competition_path(@competition), :class => 'btn' %>
+      </div>
+
+  		<h2><%= @season.name %></h2>
+      <p><strong>Start date: </strong> <%= @season.start_date %></p>
+      <p><strong>End date: </strong> <%= @season.end_date %></p>
+
+    </div>
+
+  </div>
+
+  <div class="span4">
+    <h2>Sidebar</h2>
+  </div>
+
+</div>

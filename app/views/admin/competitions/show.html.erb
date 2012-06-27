@@ -1,0 +1,66 @@
+<%= render 'header' %>
+
+<div class="row">
+
+  <div class="span8">
+
+    <div class="bordered">
+
+      <div class="pull-right">
+        <%= link_to 'Back', admin_competitions_path, :class => 'btn' %>
+        <%= link_to 'New Season', new_admin_competition_season_path(@competition), :class => 'btn btn-primary' %>
+      </div>
+
+      <h2><%= @competition.name %></h2>
+
+      <h3>Seasons</h3>
+
+      <table class="table table-striped table-bordered">
+
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Start date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <% @competition.seasons.all.each do |season| %>
+          <tr>
+            <td><%= link_to season.name, admin_competition_season_path(season.competition_id, season) %></td>
+            <td><%= season.start_date %></td>
+            <td><%= season.end_date %></td>
+            <td>
+              <%= link_to 'Edit Season', edit_admin_competition_season_path(season.competition_id, season), :class => 'btn' %>
+              <%= 
+                link_to 'Delete Season', '#deleteItem', 
+                'data-url' => admin_competition_season_path(season.competition_id, season),
+                'data-name' => season.name, 
+                :class => 'btn btn-danger delete' 
+              %>
+            </td>
+          </tr>
+          <% end %>
+
+          <% if @competition.seasons.all.empty? %>
+          <tr>
+            <td colspan="4">There are no seasons.</td>
+          </tr>
+          <% end %>
+
+        </tbody>
+
+      </table>
+
+    </div>
+    
+  </div>
+
+  <div class="span4">
+    <h2>Sidebar</h2>
+  </div>
+
+</div>

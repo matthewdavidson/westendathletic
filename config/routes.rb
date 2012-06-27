@@ -13,8 +13,14 @@ Westendathletic::Application.routes.draw do
 
     resources :teams do
 
-    	resources :players
+    	resources :players, :except => [:index]
     	
+    end
+
+    resources :competitions do
+
+      resources :seasons, :except => [:index]
+
     end
 
 	end
