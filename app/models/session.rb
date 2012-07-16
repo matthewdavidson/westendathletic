@@ -1,4 +1,5 @@
 class Session
+
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
@@ -26,4 +27,5 @@ class Session
       errors.add(:base, "Username and password combination is invalid") unless self.user
     end
   end
+  
 end
