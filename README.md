@@ -32,3 +32,7 @@ Amateur football team website.
 2. The user management is a little off just now. I can either have two types of
 	 admin user, one as the super admin and one that is unable to acces user 
 	 management. Currently each user has CRUD access to all users.
+3. I realise there is a distinct lack of tests surrounding the current functionality.
+	 Keeping in mind [a certain example](http://37signals.com/svn/posts/3159-testing-like-the-tsa)
+	 I do intend to add some tests around the user admin login and keep on top of
+	 things when I encounter some more complicated functionality.
