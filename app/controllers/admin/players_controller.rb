@@ -1,13 +1,7 @@
 class Admin::PlayersController < ApplicationController
-
-	before_filter :authorisation_required
   
-  # GET /admin/team/1/players
-  def index
-    @team = Team.find(params[:team_id])
-    @players = @team.players.all
-  end
-
+  before_filter :authorisation_required
+  
   # GET /admin/team/1/players/1
   def show
     @team = Team.find(params[:team_id])

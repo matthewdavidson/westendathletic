@@ -1,13 +1,7 @@
 class Admin::SeasonsController < ApplicationController
-
-	before_filter :authorisation_required
   
-  # GET /admin/competition/1/seasons
-  def index
-    @competition = Competition.find(params[:competition_id])
-    @seasons = @competition.seasons.all
-  end
-
+  before_filter :authorisation_required
+  
   # GET /admin/competition/1/seasons/1
   def show
     @competition = Competition.find(params[:competition_id])

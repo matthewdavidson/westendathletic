@@ -11,16 +11,8 @@
       </div>
 
   		<h2><%= "#{@player.firstname} #{@player.surname}" %></h2>
-  		<% if @player.position.empty? %>
-      <p>There is no position for this player yet.</p>
-      <% else %>
       <p><strong>Position: </strong> <%= @player.position %></p>
-      <% end %>
-  		<% if @player.info.empty? %>
-      <p>There is no information about this player yet.</p>
-      <% else %>
-      <p><%= @player.info %></p>
-      <% end %>
+      <p><strong>Info: </strong> <%= @player.info %></p>
 
     </div>
 

@@ -12,11 +12,7 @@
       </div>
 
       <h2><%= @team.name %></h2>
-      <% if @team.info.empty? %>
-      <p>There is no information about this team yet.</p>
-      <% else %>
-      <p><%= @team.info %></p>
-      <% end %>
+      <p><strong>Info: </strong> <%= @team.info %></p>
 
       <h3>Players</h3>
 

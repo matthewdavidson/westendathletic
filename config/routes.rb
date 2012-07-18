@@ -9,7 +9,8 @@ Westendathletic::Application.routes.draw do
 	  resource :session,
     	:only => [:new, :create, :destroy]
 
-    resources :users
+    resources :users,
+      :except => [:show]
 
     resources :teams do
 
