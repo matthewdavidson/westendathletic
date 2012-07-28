@@ -33,6 +33,6 @@ Amateur football team website.
 	 admin user, one as the super admin and one that has access to everything apart 
 	 from user management. Currently each user has CRUD access to all users. 
 3. I realise there is a distinct lack of tests surrounding the current functionality.
-	 Keeping in mind [a certain example](http://37signals.com/svn/posts/3159-testing-like-the-tsa)
+	 Keeping in mind [a certain blogpost](http://37signals.com/svn/posts/3159-testing-like-the-tsa)
 	 I do intend to add some tests around the user admin login and keep on top of
 	 things when I encounter some more complicated functionality.
