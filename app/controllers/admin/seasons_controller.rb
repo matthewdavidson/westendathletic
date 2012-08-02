@@ -49,7 +49,7 @@ class Admin::SeasonsController < ApplicationController
     competition = @season.competition
     @season.destroy
 
-    flash[:success] = 'Season was successfully destroyed.'
+    flash[:notice] = 'Season was successfully destroyed.'
     redirect_to admin_competition_path(competition)
   end
 

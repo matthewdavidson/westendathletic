@@ -1,7 +1,7 @@
 class Admin::TeamsController < ApplicationController
 
 	before_filter :authorisation_required
-  
+
   # GET /admin/teams
   def index
     @teams = Team.all
@@ -38,10 +38,10 @@ class Admin::TeamsController < ApplicationController
   # PUT /admin/teams/1
   def update
     @team = Team.find(params[:id])
-    
+
     if @team.update_attributes(params[:team])
       flash[:success] = 'Team was successfully updated.'
-      redirect_to admin_teams_path 
+      redirect_to admin_teams_path
     else
       flash.now[:error] = 'Team edit was unsuccessful.'
       render :edit
@@ -53,7 +53,7 @@ class Admin::TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.destroy
 
-    flash[:success] = 'Team was successfully destroyed.'
+    flash[:notice] = 'Team was successfully destroyed.'
     redirect_to admin_teams_path
   end
 

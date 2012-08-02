@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 
   before_filter :authorisation_required
-  
+
   # GET /admin/users
   def index
     @users = User.all
@@ -33,10 +33,10 @@ class Admin::UsersController < ApplicationController
   # PUT /admin/users/1
   def update
     @user = User.find(params[:id])
-    
+
     if @user.update_attributes(params[:user])
       flash[:success] = 'User was successfully updated.'
-      redirect_to admin_users_path 
+      redirect_to admin_users_path
     else
       flash.now[:error] = 'User edit was unsuccessful.'
       render :edit
@@ -48,8 +48,8 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    flash[:success] = 'User was successfully destroyed.'
+    flash[:notice] = 'User was successfully destroyed.'
     redirect_to admin_users_path
   end
-  
+
 end

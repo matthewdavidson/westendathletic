@@ -1,7 +1,7 @@
 class Admin::PlayersController < ApplicationController
-  
+
   before_filter :authorisation_required
-  
+
   # GET /admin/players/1
   def show
     @player = Player.find(params[:id])
@@ -33,7 +33,7 @@ class Admin::PlayersController < ApplicationController
   # PUT /admin/players/1
   def update
     @player = Player.find(params[:id])
-    
+
     if @player.update_attributes(params[:player])
       flash[:success] = 'Player was successfully updated.'
       redirect_to admin_team_path(@player.team)
@@ -49,7 +49,7 @@ class Admin::PlayersController < ApplicationController
     team = @player.team
     @player.destroy
 
-    flash[:success] = 'Player was successfully destroyed.'
+    flash[:notice] = 'Player was successfully destroyed.'
     redirect_to admin_team_path(team)
   end
 

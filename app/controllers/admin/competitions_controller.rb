@@ -1,7 +1,7 @@
 class Admin::CompetitionsController < ApplicationController
 
 	before_filter :authorisation_required
-  
+
   # GET /admin/competitions
   def index
     @competitions = Competition.all
@@ -38,10 +38,10 @@ class Admin::CompetitionsController < ApplicationController
   # PUT /admin/competitions/1
   def update
     @competition = Competition.find(params[:id])
-    
+
     if @competition.update_attributes(params[:competition])
       flash[:success] = 'Competition was successfully updated.'
-      redirect_to admin_competitions_path 
+      redirect_to admin_competitions_path
     else
       flash.now[:error] = 'Competition edit was unsuccessful.'
       render :edit
@@ -53,7 +53,7 @@ class Admin::CompetitionsController < ApplicationController
     @competition = Competition.find(params[:id])
     @competition.destroy
 
-    flash[:success] = 'Competition was successfully destroyed.'
+    flash[:notice] = 'Competition was successfully destroyed.'
     redirect_to admin_competitions_path
   end
 
