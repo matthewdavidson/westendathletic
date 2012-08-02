@@ -1,10 +1,10 @@
 Westendathletic::Application.routes.draw do
 
-	root :to => 'home#index' 
-  
+	root :to => 'home#index'
+
   namespace :admin do
 
-  	root :to => 'users#index' 
+  	root :to => 'dashboard#index'
 
 	  resource :session,
     	:only => [:new, :create, :destroy]
@@ -12,17 +12,10 @@ Westendathletic::Application.routes.draw do
     resources :users,
       :except => [:show]
 
-    resources :teams do
+    resources :teams, :competitions
 
-    	resources :players, :except => [:index]
-    	
-    end
-
-    resources :competitions do
-
-      resources :seasons, :except => [:index]
-
-    end
+    resources :players, :seasons,
+      :except => [:index]
 
 	end
 

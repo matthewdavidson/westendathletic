@@ -1,4 +1,6 @@
-<%= form_for([:admin, @competition, @season], :html => {:class => 'form-horizontal well'}) do |f| %>
+<%= form_for([:admin, @season], :html => {:class => 'form-horizontal well'}) do |f| %>
+
+  <%= f.hidden_field :competition_id %>
 
   <fieldset>
 
@@ -40,7 +42,7 @@
 
     <div class="form-actions">
       <%= f.submit :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', admin_competition_path(@competition), :class => 'btn' %>
+      <%= link_to 'Cancel', admin_competition_path(@season.competition), :class => 'btn' %>
     </div>
 
 </fieldset>

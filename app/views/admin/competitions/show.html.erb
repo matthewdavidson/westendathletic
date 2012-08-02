@@ -8,7 +8,7 @@
 
       <div class="pull-right">
         <%= link_to 'Back', admin_competitions_path, :class => 'btn' %>
-        <%= link_to 'New Season', new_admin_competition_season_path(@competition), :class => 'btn btn-primary' %>
+        <%= link_to 'New Season', new_admin_season_path(:competition_id => @competition.id), :class => 'btn btn-primary' %>
       </div>
 
       <h2><%= @competition.name %></h2>
@@ -30,14 +30,14 @@
 
           <% @competition.seasons.all.each do |season| %>
           <tr>
-            <td><%= link_to season.name, admin_competition_season_path(season.competition_id, season) %></td>
+            <td><%= link_to season.name, admin_season_path(season) %></td>
             <td><%= season.start_date %></td>
             <td><%= season.end_date %></td>
             <td>
-              <%= link_to 'Edit Season', edit_admin_competition_season_path(season.competition_id, season), :class => 'btn' %>
+              <%= link_to 'Edit Season', edit_admin_season_path(season), :class => 'btn' %>
               <%= 
                 link_to 'Delete Season', '#deleteItem', 
-                'data-url' => admin_competition_season_path(season.competition_id, season),
+                'data-url' => admin_season_path(season),
                 'data-name' => season.name, 
                 :class => 'btn btn-danger delete' 
               %>

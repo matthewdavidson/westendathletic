@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
 
   attr_accessible :name, :info, :home_team
 
-  validates :name, 
+  validates :name,
   	:presence => true, :length => { :maximum => 255 }
 
   validates :info,

@@ -1,8 +1,8 @@
 class Player < ActiveRecord::Base
 
-  attr_accessible :firstname, :surname, :position, :info
+  attr_accessible :firstname, :surname, :position, :info, :team_id
 
-  validates :firstname, :surname,
+  validates :firstname, :surname, :team,
   	:presence => true
 
   validates :firstname, :surname, :position,
