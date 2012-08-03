@@ -17,6 +17,9 @@ Westendathletic::Application.routes.draw do
     resources :players, :seasons,
       :except => [:index]
 
+    get 'seasons/:id/teams' => 'seasons#teams', :as => :season_teams
+    put 'seasons/:id/teams' => 'seasons#update_teams', :as => :season_teams
+
 	end
 
 end

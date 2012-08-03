@@ -9,5 +9,6 @@ class Team < ActiveRecord::Base
   	:length => { :maximum => 1020 }
 
   has_many :players
+  has_and_belongs_to_many :seasons
 
 end

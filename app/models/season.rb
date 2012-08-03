@@ -9,5 +9,6 @@ class Season < ActiveRecord::Base
   	:length => { :maximum => 255 }
 
   belongs_to :competition
+  has_and_belongs_to_many :teams
 
 end

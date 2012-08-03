@@ -53,4 +53,23 @@ class Admin::SeasonsController < ApplicationController
     redirect_to admin_competition_path(competition)
   end
 
+  # GET /admin/seasons/1/teams
+  def teams
+    @season = Season.find(params[:id])
+  end
+
+  # PUT /admin/seasons/1/teams
+  def update_teams
+    @season = Season.find(params[:id])
+    @season.teams = Team.find_all_by_id(params[:teams].values.to_a)
+
+    if @season.save
+      flash[:success] = 'Teams successfully updated for this season.'
+      redirect_to admin_season_path(@season)
+    else
+      flash.now[:error] = 'Teams edit for this season was unsuccessful.'
+      render :teams
+    end
+  end
+
 end
