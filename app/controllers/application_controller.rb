@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
 
   def authorisation_required
   	if @current_user.nil?
-  	 redirect_to new_admin_session_path, notice: 'You must be logged in to view this page.'
+      session[:redirect] = request.fullpath
+      redirect_to new_admin_session_path, notice: 'You must be logged in to view this page.'
     end
   end
 

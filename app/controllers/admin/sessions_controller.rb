@@ -11,7 +11,11 @@ class Admin::SessionsController < ApplicationController
 
     if @session.valid?
       session[:user_id] = @session.user.id
-      redirect_to admin_root_path
+      if session[:redirect]
+        redirect_to session[:redirect] and session[:redirect] = nil
+      else
+        redirect_to admin_root_path
+      end
     else
       flash.now[:error] = 'Your login attempt was unsuccessful.'
       render "new"
