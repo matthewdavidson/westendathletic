@@ -4,8 +4,15 @@
 
   <div class="span8">
   	<div class="bordered">
+
+      <div class="pull-right">
+        <%= link_to 'Add Team', '#', { :id => 'js_add_team', :class => 'btn' } %>
+      </div>
+
   		<h2>Edit Season Teams</h2>
+
     	<%= render 'teams_form' %>
+
     </div>
   </div>
 
@@ -14,3 +21,17 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+    westendathletic.seasons.teams.init({
+      addTeamButtonId: '#js_add_team',
+      removeTeamButtonClass: '.js_remove_team',
+      teamControlGroupClass: '.control-group'
+    });
+
+  });
+
+</script>

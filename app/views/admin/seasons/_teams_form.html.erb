@@ -1,16 +1,13 @@
-<%= form_for([:admin, @season], :url => admin_season_teams_path, :html => {:class => 'form-horizontal well'}) do |f| %>
+<%= form_for([:admin, @season], :url => admin_season_teams_path, :html => {:id => 'js_teams', :class => 'form-horizontal well'}) do |f| %>
 
   <fieldset>
 
     <% @season.teams.each_with_index do |team, index| %>
     <div class="control-group">
-      <%= label_tag "teams[#{index}]", index + 1, :class => 'control-label' %>
       <div class="controls">
         <%= select_tag "teams[#{index}]", options_for_select(get_teams_hash, team.id), :prompt => 'Select Team' %>
         <span class="help-inline">
-          <% if index == @season.teams.length - 1 %>
-          <%= link_to 'Add Team', '#', { :id => 'js_add_team', :class => 'btn btn-mini' } %>
-          <% end %>
+          <%= link_to 'Remove', '#', { :class => 'js_remove_team btn btn-danger btn-mini' } %>
         </span>
       </div>
     </div>
@@ -18,11 +15,10 @@
 
     <% if @season.teams.empty? %>
     <div class="control-group">
-      <%= label_tag "teams[0]", 1, :class => 'control-label' %>
       <div class="controls">
         <%= select_tag "teams[0]", options_for_select(get_teams_hash), :prompt => 'Select Team' %>
         <span class="help-inline">
-          <%= link_to 'Add Team', '#', { :id => 'js_add_team', :class => 'btn btn-mini' } %>
+          <%= link_to 'Remove', '#', { :class => 'js_remove_team btn btn-danger btn-mini' } %>
         </span>
       </div>
     </div>
